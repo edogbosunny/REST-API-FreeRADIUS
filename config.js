@@ -1,3 +1,3 @@
 module.exports = {
-    'database': 'mongodb://localhost:27017/radius'
+    'database': 'mongodb://freeradius:password123@ds135068.mlab.com:35068/radius'
 };

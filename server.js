@@ -9,9 +9,10 @@ var express = require('express'),
   Profiles = require('./api/models/profiles'),
   config = require('./config');
 
-  
+
 mongoose.Promise = global.Promise;
-mongoose.connect(config.database, { useNewUrlParser: true } ); 
+mongoose.connect(config.database, { useNewUrlParser: true, useUnifiedTopology: true }).then(() => console.log('Mongo DB Connected'))
+  .catch(err => console.log(err));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

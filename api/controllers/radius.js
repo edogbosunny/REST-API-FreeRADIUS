@@ -41,7 +41,14 @@ exports.accounting = function(req, res) {
 };
 
 exports.create_user = function(req, res) {
-  var new_user = new Users(req.body);
+  const profileObj = req.body.profile;
+  const profile = new Profiles(profileObj);
+  profile.save();
+  var new_user = new Users({
+    ...req.body,
+    profile
+  });
+  console.log('------->', req.body)
   new_user.save(function(err, user) {
     if (err)
       res.send(err);
